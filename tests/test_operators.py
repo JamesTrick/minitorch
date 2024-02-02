@@ -107,8 +107,7 @@ def test_sigmoid(a: float) -> None:
     * It crosses 0 at 0.5
     * It is  strictly increasing.
     """
-    # TODO: Implement for Task 0.2.
-    raise NotImplementedError('Need to implement for Task 0.2')
+    assert_close(sigmoid(-a), 1 - sigmoid(a))
 
 
 @pytest.mark.task0_2
@@ -120,13 +119,14 @@ def test_transitive(a: float, b: float, c: float) -> None:
 
 
 @pytest.mark.task0_2
-def test_symmetric() -> None:
+@given(small_floats, small_floats)
+def test_symmetric(a: float, b: float) -> None:
     """
     Write a test that ensures that :func:`minitorch.operators.mul` is symmetric, i.e.
     gives the same value regardless of the order of its input.
     """
-    # TODO: Implement for Task 0.2.
-    raise NotImplementedError('Need to implement for Task 0.2')
+    assert mul(a, b) == mul(b, a)
+    assert add(a, b) == add(b, a)
 
 
 @pytest.mark.task0_2
